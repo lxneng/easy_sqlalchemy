@@ -1,7 +1,7 @@
 from setuptools import setup
 from setuptools import find_packages
 
-version = '0.1'
+version = '0.1.1'
 
 requires = [
     'setuptools',
@@ -27,7 +27,7 @@ setup(name='easy_sqlalchemy',
         ],
       author='Eric Lo',
       author_email='lxneng@gmail.com',
-      url='http://lxneng.com/',
+      url='https://github.com/lxneng/easy_sqlalchemy',
       license='BSD',
       packages=find_packages('src'),
       package_dir={'': 'src'},
