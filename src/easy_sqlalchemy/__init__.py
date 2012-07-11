@@ -20,7 +20,7 @@ def init_sqlalchemy(settings):
     engine = create_engine(master_url, **kwargs)
 
     # register hstore
-    if engine.name == 'postgresql':
+    if engine.name == 'postgresql' and settings.get('using_hstore', False):
         from psycopg2.extras import register_hstore
         register_hstore(engine.connect().connection, globally=True)
 
