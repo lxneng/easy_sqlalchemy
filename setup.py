@@ -1,8 +1,6 @@
 from setuptools import setup
 from setuptools import find_packages
 
-version = '0.1.5'
-
 requires = [
     'setuptools',
     'SQLAlchemy',
@@ -13,7 +11,7 @@ requires = [
 tests_require = []
 
 setup(name='easy_sqlalchemy',
-      version=version,
+      version='0.1.6',
       description='SQLAlchemy wrapper',
       classifiers=[
         'Development Status :: 5 - Production/Stable',
