@@ -19,11 +19,6 @@ def init_sqlalchemy(settings):
             kwargs[k] = v
     engine = create_engine(master_url, **kwargs)
 
-    # register hstore
-    if engine.name == 'postgresql' and settings.get('using_hstore', False):
-        from psycopg2.extras import register_hstore
-        register_hstore(engine.connect().connection, globally=True)
-
     sm = orm.sessionmaker(bind=engine, extension=ZopeTransactionExtension())
     meta.Session = orm.scoped_session(sm)
     meta.metadata.bind = engine
