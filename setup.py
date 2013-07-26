@@ -11,7 +11,7 @@ requires = [
 tests_require = []
 
 setup(name='easy_sqlalchemy',
-      version='0.1.8',
+      version='0.1.9',
       description='SQLAlchemy wrapper',
       classifiers=[
         'Development Status :: 5 - Production/Stable',

@@ -4,7 +4,7 @@ from easy_sqlalchemy import meta
 from sqlalchemy import orm
 from sqlalchemy import create_engine
 from sqlalchemy import event
-from sqlalchemy import mapper
+from sqlalchemy.orm import mapper
 from datetime import datetime
 import json
 import random
