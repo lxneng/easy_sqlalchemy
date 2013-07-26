@@ -4,7 +4,6 @@ from easy_sqlalchemy import meta
 from sqlalchemy import orm
 from sqlalchemy import create_engine
 from sqlalchemy import event
-from sqlalchemy.orm import mapper
 from datetime import datetime
 import json
 import random
@@ -48,4 +47,4 @@ def init_sqlalchemy(settings):
 
 def includeme(config):
     init_sqlalchemy(config.registry.settings)
-    event.listen(mapper, 'before_update', updated_at_listener)
+    event.listen(orm.mapper, 'before_update', updated_at_listener)
