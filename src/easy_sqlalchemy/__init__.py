@@ -3,8 +3,16 @@ from zope.sqlalchemy import ZopeTransactionExtension
 from easy_sqlalchemy import meta
 from sqlalchemy import orm
 from sqlalchemy import create_engine
+from sqlalchemy import event
+from sqlalchemy import mapper
+from datetime import datetime
 import json
 import random
+
+
+def updated_at_listener(mapper, connection, instance):
+    if 'updated_at' in instance.__table__.c:
+        instance.updated_at = datetime.now()
 
 
 def init_sqlalchemy(settings):
@@ -40,3 +48,4 @@ def init_sqlalchemy(settings):
 
 def includeme(config):
     init_sqlalchemy(config.registry.settings)
+    event.listen(mapper, 'before_update', updated_at_listener)
