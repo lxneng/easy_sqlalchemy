@@ -20,7 +20,7 @@ def init_sqlalchemy(settings):
     connect_kwargs = settings.get('sqlalchemy.connect_kwargs')
     kwargs = {}
     if connect_kwargs is not None:
-        if isinstance(connect_kwargs, basestring):
+        if isinstance(connect_kwargs, str):
             connect_kwargs = json.loads(connect_kwargs)
         for k, v in connect_kwargs.items():
             kwargs[k] = v

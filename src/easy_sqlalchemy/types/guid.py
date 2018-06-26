@@ -1,4 +1,3 @@
-"""https://github.com/2style4you/s4u.sqlalchemy/blob/master/src/s4u/sqlalchemy/uuid.py"""
 # -*- coding: utf-8 -*-
 import uuid
 from sqlalchemy.types import TypeDecorator
