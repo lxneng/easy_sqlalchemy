@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from zope.sqlalchemy import ZopeTransactionExtension
+from zope.sqlalchemy import register
 from easy_sqlalchemy import meta
 from sqlalchemy import orm
 from sqlalchemy import create_engine
@@ -26,8 +26,10 @@ def init_sqlalchemy(settings):
             kwargs[k] = v
     engine = create_engine(master_url, **kwargs)
 
-    sm = orm.sessionmaker(bind=engine, extension=ZopeTransactionExtension())
-    meta.Session = orm.scoped_session(sm)
+    sm = orm.sessionmaker(bind=engine)
+    ss = orm.scoped_session(sm)
+    register(ss)
+    meta.Session = ss
     meta.metadata.bind = engine
 
     # slaves
@@ -35,8 +37,10 @@ def init_sqlalchemy(settings):
     slaves = []
     for url in slaves_url:
         slave = create_engine(url, **kwargs)
-        sm = orm.sessionmaker(bind=slave, extension=ZopeTransactionExtension())
-        slaves.append(orm.scoped_session(sm))
+        sm = orm.sessionmaker(bind=slave)
+        ss = orm.scoped_session(sm)
+        register(ss)
+        slaves.append(ss)
 
     if slaves:
         slave = random.choice(slaves)

@@ -2,16 +2,15 @@ from setuptools import setup
 from setuptools import find_packages
 
 requires = [
-    'setuptools',
-    'SQLAlchemy',
-    'zope.sqlalchemy',
-    'IPy',
+    'SQLAlchemy==1.3.10',
+    'zope.sqlalchemy==1.2',
+    'IPy==1.0',
     ]
 
 tests_require = []
 
 setup(name='easy_sqlalchemy',
-      version='0.2.0',
+      version='0.2.1',
       description='SQLAlchemy wrapper',
       classifiers=[
         'Development Status :: 5 - Production/Stable',

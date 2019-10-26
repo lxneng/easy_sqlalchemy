@@ -1,7 +1,4 @@
-/bin
-/develop-eggs
-/eggs
-/parts
-/var
-/.installed.cfg
-/.mr.developer.cfg
+/build
+/dist
+*.egg-info
+*.pyc
